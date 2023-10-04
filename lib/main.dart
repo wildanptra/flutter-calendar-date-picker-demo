@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:calendar_date_picker2/calendar_date_picker2.dart';
+import 'package:flutter_calendar_date_picker_demo/time_range_picker_demo.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,7 +31,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  List<DateTime?> _selectedDates = [];
+List<DateTime?> _selectedDates = [];
 
 Future<void> _selectDates(BuildContext context) async {
 
@@ -85,9 +86,20 @@ Future<void> _selectDates(BuildContext context) async {
           children: <Widget>[
             ElevatedButton(
               onPressed: () {
+                Navigator.push(
+                  context, 
+                  MaterialPageRoute(
+                    builder: (context) => const TimeRangePickerDemo()
+                  ),
+                );
+              },
+              child: const Text("Pilih Waktu"),
+            ),
+            ElevatedButton(
+              onPressed: () {
                 _selectDates(context);
               },
-              child: const Text('Open Multi Date Picker'),
+              child: const Text('Pilih Tanggal'),
             ),
             const SizedBox(height: 20),
             Expanded(
